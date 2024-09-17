@@ -1,2 +1,3 @@
 s=set()
-print(s.pop())'''KeyError'''
+'''KeyError'''
+print(s.pop())
