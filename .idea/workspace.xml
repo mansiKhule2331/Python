@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1">
-      <change afterPath="$PROJECT_DIR$/Python Pratice/Day11.py" afterDir="false" />
-    </list>
+    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +40,9 @@
   "keyToString": {
     "Python.Day1.executor": "Run",
     "Python.Day10.executor": "Run",
+    "Python.Day11.executor": "Run",
+    "Python.Day12.executor": "Run",
+    "Python.Day13.executor": "Run",
     "Python.Day2.executor": "Run",
     "Python.Day3.executor": "Run",
     "Python.Day4.executor": "Run",
