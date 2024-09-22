@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1" />
+    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-09-2024_22_14__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,12 +65,17 @@
     "Python.Day29.executor": "Run",
     "Python.Day3.executor": "Run",
     "Python.Day30.executor": "Run",
+    "Python.Day31.executor": "Run",
+    "Python.Day32.executor": "Run",
+    "Python.Day34.executor": "Run",
+    "Python.Day35.executor": "Run",
     "Python.Day4.executor": "Run",
     "Python.Day5.executor": "Run",
     "Python.Day6.executor": "Run",
     "Python.Day7.executor": "Run",
     "Python.Day8.executor": "Run",
     "Python.Day9.executor": "Run",
+    "Python.day33.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
