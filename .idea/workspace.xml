@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-09-2024_22_14__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +38,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.DAy38.executor": "Run",
+    "Python.DAy39.executor": "Run",
     "Python.Day1.executor": "Run",
     "Python.Day10.executor": "Run",
     "Python.Day11.executor": "Run",
@@ -69,7 +68,10 @@
     "Python.Day32.executor": "Run",
     "Python.Day34.executor": "Run",
     "Python.Day35.executor": "Run",
+    "Python.Day36.executor": "Run",
+    "Python.Day37.executor": "Run",
     "Python.Day4.executor": "Run",
+    "Python.Day40.executor": "Run",
     "Python.Day5.executor": "Run",
     "Python.Day6.executor": "Run",
     "Python.Day7.executor": "Run",
