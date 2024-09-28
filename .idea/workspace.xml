@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3ec73e20-4813-4b34-8539-05f0b2d5d4cf" name="Changes" comment="Day1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,6 +93,11 @@
     "Python.Day59.executor": "Run",
     "Python.Day6.executor": "Run",
     "Python.Day60.executor": "Run",
+    "Python.Day61.executor": "Run",
+    "Python.Day62.executor": "Run",
+    "Python.Day63.executor": "Run",
+    "Python.Day64.executor": "Run",
+    "Python.Day65.executor": "Run",
     "Python.Day7.executor": "Run",
     "Python.Day8.executor": "Run",
     "Python.Day9.executor": "Run",
