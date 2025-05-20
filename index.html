@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enhanced Expense Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #161615;
+      color: #fff;
+    }
+    .card {
+      background-color: #7f72ec;
+      border-radius: 0.5rem;
+      border: 1px solid #333;
+    }
+    .form-control, .btn {
+      border-radius: 0.5rem;
+    }
+    .square-card {
+      margin-bottom: 1rem;
+    }
+    select, input[type="date"] {
+      background-color: #1e1e1e;
+      color: #fff;
+      border: 1px solid #444;
+    }
+    @media (max-width: 576px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container py-4">
+  <h2 class="text-center mb-4">💰 Enhanced Expense Tracker</h2>
+
+  <form id="expense-form" class="row g-2 mb-4">
+    <div class="col-md-3 col-sm-6">
+      <input type="text" id="expense-name" class="form-control" placeholder="Name" required>
+    </div>
+    <div class="col-md-2 col-sm-6">
+      <input type="number" id="expense-amount" class="form-control" placeholder="Amount" required>
+    </div>
+    <div class="col-md-2 col-sm-6">
+      <input type="date" id="expense-date" class="form-control" required>
+    </div>
+    <div class="col-md-2 col-sm-6">
+      <select id="expense-category" class="form-control" required>
+        <option value="" disabled selected>Category</option>
+        <option>Food</option>
+        <option>Transport</option>
+        <option>Shopping</option>
+        <option>Bills</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <button type="submit" class="btn btn-success w-100">Add Expense</button>
+    </div>
+  </form>
+
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+    <div>
+      <input type="month" id="month-filter" class="form-control mb-2" />
+    </div>
+    <div class="d-flex gap-2">
+      <button onclick="exportToCSV()" class="btn btn-outline-info">Export to CSV</button>
+    </div>
+  </div>
+
+  <h4>Total Expense: ₹<span id="total-expense">0</span></h4>
+  <h6 id="filter-info" class="text-muted"></h6>
+
+  <div id="expenses-list" class="mt-3"></div>
+
+  <h4 class="mt-4">Total by Category</h4>
+  <ul id="category-totals" class="list-group"></ul>
+
+</div>
+
+<script>
+  const form = document.getElementById("expense-form");
+  const nameInput = document.getElementById("expense-name");
+  const amountInput = document.getElementById("expense-amount");
+  const dateInput = document.getElementById("expense-date");
+  const categoryInput = document.getElementById("expense-category");
+  const expensesList = document.getElementById("expenses-list");
+  const totalExpenseEl = document.getElementById("total-expense");
+  const monthFilter = document.getElementById("month-filter");
+  const categoryTotals = document.getElementById("category-totals");
+  const filterInfo = document.getElementById("filter-info");
+
+  let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+  function saveExpenses() {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }
+
+  function renderExpenses(filtered = expenses) {
+    expensesList.innerHTML = "";
+    let total = 0;
+    const categoryMap = {};
+
+    filtered.forEach((exp, index) => {
+      const card = document.createElement("div");
+      card.className = "card p-3 square-card";
+
+      card.innerHTML = `
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5>${exp.name} - ₹${parseFloat(exp.amount).toFixed(2)}</h5>
+            <p class="mb-0">📅 ${exp.date} | 📌 ${exp.category}</p>
+          </div>
+          <div>
+            <button class="btn btn-warning btn-sm me-2" onclick="editExpense(${index})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteExpense(${index})">Delete</button>
+          </div>
+        </div>
+      `;
+      expensesList.appendChild(card);
+
+      total += parseFloat(exp.amount);
+      categoryMap[exp.category] = (categoryMap[exp.category] || 0) + parseFloat(exp.amount);
+    });
+
+    totalExpenseEl.textContent = total.toFixed(2);
+    renderCategoryTotals(categoryMap);
+  }
+
+  function renderCategoryTotals(map) {
+    categoryTotals.innerHTML = "";
+    for (const cat in map) {
+      const li = document.createElement("li");
+      li.className = "list-group-item bg-dark text-white d-flex justify-content-between";
+      li.innerHTML = `<strong>${cat}</strong><span>₹${map[cat].toFixed(2)}</span>`;
+      categoryTotals.appendChild(li);
+    }
+  }
+
+  function deleteExpense(index) {
+    if (confirm("Delete this expense?")) {
+      expenses.splice(index, 1);
+      saveExpenses();
+      filterAndRender();
+    }
+  }
+
+  function editExpense(index) {
+    const e = expenses[index];
+    nameInput.value = e.name;
+    amountInput.value = e.amount;
+    dateInput.value = e.date;
+    categoryInput.value = e.category;
+    deleteExpense(index);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const newExp = {
+      name: nameInput.value,
+      amount: parseFloat(amountInput.value),
+      date: dateInput.value,
+      category: categoryInput.value,
+    };
+    expenses.push(newExp);
+    saveExpenses();
+    form.reset();
+    filterAndRender();
+  });
+
+  monthFilter.addEventListener("change", filterAndRender);
+
+  function filterAndRender() {
+    const selectedMonth = monthFilter.value;
+    if (!selectedMonth) {
+      renderExpenses(expenses);
+      filterInfo.textContent = "";
+      return;
+    }
+    const filtered = expenses.filter(e => e.date.startsWith(selectedMonth));
+    renderExpenses(filtered);
+    filterInfo.textContent = `Showing results for ${selectedMonth}`;
+  }
+
+  function exportToCSV() {
+    let csv = "Name,Amount,Date,Category\n";
+    expenses.forEach(exp => {
+      csv += `"${exp.name}",${exp.amount},"${exp.date}","${exp.category}"\n`;
+    });
+    const blob = new Blob([csv], { type: "text/csv" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "expenses.csv";
+    a.click();
+  }
+
+  // Initial render
+  renderExpenses();
+</script>
+</body>
+</html>
